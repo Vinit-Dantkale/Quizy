@@ -42,20 +42,19 @@ function showquiz(arr){
 	var rad="<input type='checkbox' onclick=clked(this); id=";
 
 	for(var i=0;i<arr.length;i++){
-		var x="<p id=p"+i+">";
-		x+="<b>Category - "+arr[i].category+"<br>Difficulty - "+arr[i].difficulty+"</b><br><br>"+arr[i].question+"<br>";
+		var x="<p class='col-lg-12' id=p"+i+">";
+		x+="<b>Category - "+arr[i].category+"<br>Difficulty - "+arr[i].difficulty+"</b><br><br>"+arr[i].question+"<br><br>";
 
 		var opn=Math.floor(Math.random()*10);
 		opn=opn%(arr[i].incorrect_answers.length+1);
 
 		for(var j=0,k=0;j<arr[i].incorrect_answers.length+1;j++)
 		{
-			if(j==opn){answers.push(j);x+=rad+i+j+">&nbsp;"+arr[i].correct_answer+"&emsp;&emsp;&emsp;&emsp;"}
-			else{x+=rad+i+j+">&nbsp;"+arr[i].incorrect_answers[k]+"&emsp;&emsp;&emsp;&emsp;";k++;}
+			if(j==opn){answers.push(j);x+=rad+i+j+">&nbsp;"+arr[i].correct_answer+"<br>"}
+			else{x+=rad+i+j+">&nbsp;"+arr[i].incorrect_answers[k]+"<br>";k++;}
 		}
-		
 		useranswers.push(-1);
-		x+="<br><br><br>"+(i+1)+"/"+num+"</p>";
+		x+="<br>"+(i+1)+"/"+num+"</p>";
 		document.getElementById("qu").innerHTML+=x;
 	}
 	showques();
@@ -140,8 +139,6 @@ function startquiz(){
 	else{url=url+num+cate+diffi+type;}
 
 	shownocho();
-	
-		
 }
 
 function setcol(x,col)
@@ -149,5 +146,3 @@ function setcol(x,col)
 	var el=document.getElementsByName(x)[0];
 	el.style.borderColor=""+col+"";
 }
-
-
